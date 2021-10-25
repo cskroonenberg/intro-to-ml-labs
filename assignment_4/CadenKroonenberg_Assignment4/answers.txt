@@ -1,0 +1,37 @@
+Caden Kroonenberg
+10-18-21
+a. Based on accuracy which dimensionality reduction method, PCA, simulate annealing, or the genetic algorithm worked the best?
+The genetic algorithm (GA) performed the best (consistent final accuracy score of 98)
+Simulated annealing occassionally reached same accuracy score that GA did but because it wasn't reaching that result as consistenly, I'd say that GA performed better.
+
+b. For each of the two other methods, explain why you think it did not perform as well as the best one.
+PCA:
+PCA feature transformation assumes the features are linearly correlated. Furthermore, the PoV threshold resulted in only one (transformed) feature being used.
+It is possible that with a higher threshold, a better solution may have been found, although I think it's not likely that this solution would have outperformed the genetic algorithm given that the best results I've seen typically incorporated at least some of the original features.
+Furthermore, PCA tranformation lacks the iterative improvements that the genetic algorithm employs, so the results are just results and are never improved upon using strictly tranformation.
+
+Simulated Annealing:
+This model reached the same solution that the genetic algorithm reached on occassion, but not consistenly.
+Simulated annealing doesn't build off successful solutions as well as the genetic algorithm.
+It does revert back to it's best solution if no improvements have been made in 10 iterations and rejects
+sets which are not strong enough, it only takes a single solution into account. GA takes multiple (in this case 5) solutions
+into account when making variations for the next generation. This allows it to follow different paths in finding a solution, rather than (seemingly) going in one direction.
+
+c. Did the best dimensionality reduction method produce a better accuracy than using none (i.e. the results of Part 1)? Explain possible reasons why it did or did not.
+Yes, this is because the genetic algorithm not only takes the tranformed features (from PCA transformation) into account (on top of the original features),
+but it also explores different combinations of the features and builds towards a (sub) optimum solution (limited by the # of generations).
+
+d. Did Part 2 produce the same set of best features as Part 3? Explain possible reasons why it did or did not.
+Because of the poor performance of the best feature set from Part 2 (acc: 92.66), it is very unlikely, if not imposibble that simulated annealing would have produced the same result.
+For this to occur, every variation from it's base set [sepal-length, sepal-width, petal-length, petal-width, z1, z2, z3, z4] would have needed to perform worse than [z1] and any subsequent variations would have needed to perform similarly
+
+e. Did Part 2 produce the same set of best features as Part 4? Explain possible reasons why it did or did not.
+As stated in part d, this is in large part due to the (relatively) poor performance from the resulting subset from PCA transformation.
+The genetic algorithm finds the strongest variations of each generation, and then builds off them to find it's best solution. Because [z1] performed poorly, the algorithm didn't make any attempts to work towards that subset.
+Furthermore, one of the initial individuals used in the genetic algorithm ['sepal-width' 'petal-length' 'petal-width' 'z1' 'z2'], received an accuracy score of 94%. It would have been impossible for [z1] to be the resulting subset
+from the GA simply for this fact alone (94% > 92.266%).
+
+f. Did Part 3 produce the same set of best features as Part 4? Explain possible reasons why it did or did not.
+Simulated annealing produced the same set of best features as part 4 on occassion. The simulated annealing process randomly builds towards a sub-optimum solution.
+In some cases, the process found the same subset which was produced by the genetic algorithm in it's random jumps from subset to subset. Because of this randomness,
+it would sometimes chase another sub-optimum solution (often leading to accuracy scores around 96%) and not always find the same subset from the genetic algorithm.

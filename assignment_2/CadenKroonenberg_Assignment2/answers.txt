@@ -1,0 +1,31 @@
+Caden Kroonenberg
+09-15-21
+
+a. Based on accuracy which model is the best one?
+    Linear Discriminant Analysis
+
+b. For each of the 6 other models, explain why you think it does not perform as well as the best one.
+    Linear Regression:
+        This model performed almost as well as LDA because the data was mostly linear, however Linear Regression does not take covariances into account.
+        This may have caused this model to perform worse than LDA
+
+    Deg. 2 Polynomial Regression:
+        This model performed almost as well as LDA, however Polynomial Regression does not take covariances into account.
+        This may have caused this model to perform worse than LDA
+
+    Deg. 3 Polynomial Regression:
+        This model performed the poorest amongst all the classifiers tested in this assignment.
+        The high degree of this polynomial regression caused it to generate results which were too complex for the data which was mostly linear in nature.
+        Polynomial regression also does not take interdependence of features into account which leads to poor performance.
+
+    Naive Baysian:
+        The Naive Baysian model assumes features are independent, which is likely not the case for a dataset of flowers and their features.
+
+    kNN:
+        While kNN makes no assumptions about independence of data, it also does not take it into account.
+        kNN also performs poorly for high-dimensional data; the fact that there were three features as opposed to one or two may have caused it to perform poorer than LDA
+
+    Quadratic Discriminant Analysis:
+        The data's features must have had very similar covariances, leading to superior performance by LDA, while QDA performed slightly worse.
+        If the data had varying covariances, QDA would have performed better than LDA
+

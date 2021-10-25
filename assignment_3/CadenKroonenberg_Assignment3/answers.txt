@@ -1,0 +1,67 @@
+Caden Kroonenberg
+09-27-21
+
+1) CompareMLModelsV2
+    a. Based on accuracy which model is the best one?
+        Linear Disciminant Analysis (although the Neural Net matched its accuracy scores in some trials)
+
+    b. For each of the 11 other models, explain why you think it does not perform as well as the best one.
+        Linear Regression:
+            Linear Regression assumes a linear relationship between inputs and the output, but ignores how inputs can change eachother (covariance).
+            Leaving covariance out of the calculations caused this model to perform poorer than LDA.
+
+        Deg. 2 Polynomial Regression:
+            This model performed almost as well as LDA, however Polynomial Regression does not take covariances into account, so the degree to which input variables affect eachother was ignored.
+            Furthermore, the training data set may not have been large enough to calculate the more accurate coefficients, leading to poorer performance.
+
+        Deg. 3 Polynomial Regression:
+            This model performed the poorest amongst all the classifiers tested in this assignment.
+            The high degree of this polynomial regression caused it to generate a model which was overfitted to the training data, thus causing poor accuracy with test data.
+            Polynomial regression also does not take interdependence of features into account which leads to poor performance.
+
+        Naive Baysian:
+            The Naive Baysian model assumes features are independent, which is likely not the case for a dataset of flowers and their features.
+
+        kNN:
+            While kNN makes no assumptions about independence of data, it also does not take it into account.
+            kNN also performs poorly for high-dimensional data; the fact that there were three features as opposed to one or two may have caused it to perform poorer than LDA
+
+        Quadratic Discriminant Analysis:
+            The data's features must have had very similar covariances, leading to superior performance by LDA, while QDA performed slightly worse.
+            If the data had varying covariances, QDA would have performed better than LDA
+
+        Support Vector Machine:
+            It's possible that other kernels could have produced better accuracy scores. Overfitting shouldn't be a large factor in the SVM's poor performance given that there were only 4 features for 150 samples.
+            If there were 150 features and only 4 samples, it would have been very likely that overfitting would have occurred, which would lead to poor performance.
+
+        Decision Tree:
+            Overfitting may have led to poor performance. 
+
+        Random Forest:
+            Random forests are less prone to overfitting than decision trees so this most likely had little effect on the performance of the classifier. I think if there was a larger sample size of training data, the random forest may have performed better.
+            Each tree in a random forest is trained off a random subset of the training data, so each tree received far less samples than all the other models.
+
+        Extra Trees:
+            In general, this classifier performed very poorly in comparison to the other classifiers. The Extra Trees classifier chooses thresholds at random and uses the best of these thresholds for splitting rules, as opposed to the method the Random Trees classifier employs which chooses the most discriminative thresholds.
+            I suppose even the best of the random thresholds were not better than the thresholds the random forest picked.
+
+        Neural Net:
+            This classifier actually performed very well. In some cases, it matched the LDA classifier in accuracy score. The LDA classifier's deterministic approach just had a better score than the best neural nets this classifier created.
+
+2) dbn
+    a. Does the program use k-fold cross-validation?
+        No
+    b. What percentage of the data set was used to train the DBN model?
+        80%
+    c. How many samples are in the test set?
+        360
+    d. How many samples are in the training set?
+        1437
+    e. How many features are in test set?
+        64
+    f. How many features are in the training set?
+        64
+    g. How many classes are there?
+        10
+    h. List the classes.
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9
