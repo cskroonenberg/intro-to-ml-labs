@@ -1,0 +1,9 @@
+Caden Kroonenberg
+11-22-21
+
+1.
+For policy iteration, I kept a 2D array of all the updated values after sweeping through the policy array which I used to update the policy array after calculating new values for all cells.
+To test for convergence, I simply checked if this 2D array matched the policy array from the previous iteration.
+
+2.
+For value iteration, I used the same method as policy iteration - simply check if the cell values match the cell values calculated in the previous iteration.
