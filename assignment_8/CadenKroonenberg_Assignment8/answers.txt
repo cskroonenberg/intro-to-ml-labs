@@ -1,0 +1,30 @@
+Caden Kroonenberg
+12-6-21
+
+1.1) I kept an array with the same dimensions as the V(s) array which I used to store the V(s) array from the previous iteration.
+If all the V(s) values from an epoch were the same as they were from the previous epoch, convergence is said to have been reached.
+
+2.2) No. The Every Visit method converged in ~550 epochs, while the First Visit method took ~750 epochs to converge.
+Because the Monte Carlo Algorithms employ randomness into their calculations, it is impractical for both methods to converge in the same # of epochs - the number isn't consistent.
+
+3.3) See state_diagrams.pdf
+
+3.4) Like my Monte Carlo method, I kept an array with the same dimensions as the Value Matrix which I used to store the Value Matrix from the previous iteration.
+I would compare the two at the end of each episode. If they contained the same values AND if each valid state-action pair (from the Rewards Matrix) had a nonzero value in the Value Matrix, convergence is said to have been reached.
+Checking for nonzero values in the Value Matrix is necessary because without this component, convergence can easily be detected early if the random actions do not reach certain places in the gridtask world.
+
+3.5) Each of the three following paths are equally optimal (this is because Q(7,2) == Q(7,6) and Q(6,1) == Q(6,5)):
+
+7 -> 2 -> 1 -> 0
+7 -> 6 -> 1 -> 0
+7 -> 6 -> 5 -> 1
+
+4.6) I used the a similar convergence detection method as my Q-Learning implementation. A "copy" array containing the Value Matrix from the previous iteration was employed and compared against the updated Value Matrix at the end of each episode.
+Rather than checking if each valid state-action pair had been used (which is impossible with SARSA), I regulated that each state was visited at least one time.
+I employed this rule because convergence would be detected incredibly early and with very little information gained by simply comparing the value matrix to the previous episode.
+
+4.7) The optimal path would be: 7 -> 2 -> 1 -> 0
+
+4.8) No. Because of the nature of the Q-Learning and SARSA algorithms, they do not converge in the same number of episodes.
+Each algorithm may take longer or shorter than its previous attempt just depending on how the random events (like initial state selection and action selection).
+Furthermore, each algorithm converges in a different range of episodes. The Q-Learning algorithm converges in around 20-40 episodes while the SARSA algorithm takes around 70-120 episodes to converge.
